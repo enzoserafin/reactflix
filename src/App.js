@@ -1,12 +1,18 @@
-import 'normalize.css';
-import 'milligram';
+import { GlobalStyle } from './styles/global'
+import Header from './components/Header'
+import Main from './components/Main'
+import Footer from './components/Footer'
 
-function App() {
-  return (
-    <div>
-      <h1>Reactflix</h1>
-    </div>
-  );
-}
+import 'normalize.css'
+import 'milligram'
 
-export default App;
+const App = () => (
+  <div style={{ height: "100%" }}>
+    <GlobalStyle />
+    <Header />
+    <Main />
+    <Footer />
+  </div >
+)
+
+export default App

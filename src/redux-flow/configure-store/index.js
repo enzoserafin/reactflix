@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from '../reducers/index';
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import rootReducer from '../reducers/index'
 
 export default ({ initialState } = {}) => {
     const enhancer = compose(applyMiddleware(thunk), logger())
