@@ -1,22 +1,38 @@
+import { connect } from 'react-redux'
 import {
     Container,
     Video,
+    VideoLink,
     VideoTitle,
     VideoThumb,
     PlayStyled
 } from './styles'
+import { selectVideoSingle } from '../../redux-flow/reducers/videoSingle/action-creators'
 
-const VideosList = () => (
+const VideosList = ({ videos, handleClick }) => (
     <Container>
-        {Array.from({ length: 10 }).map((item, index) => (
-            <Video key={index}>
-                <VideoTitle>Título do vídeo</VideoTitle>
-                <VideoThumb>
-                    <PlayStyled />
-                </VideoThumb>
+        {Object.keys(videos).map((id) => (
+            <Video key={id}>
+                <VideoLink href='#' onClick={handleClick(id)}>
+                    <VideoTitle>{videos[id].title}</VideoTitle>
+                    <VideoThumb>
+                        <PlayStyled />
+                    </VideoThumb>
+                </VideoLink>
             </Video>
         ))}
     </Container>
 )
 
-export default VideosList
+const mapStateToProps = (state) => ({
+    videos: state.videos
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    handleClick: (id) => (e) => {
+        e.preventDefault()
+        dispatch(selectVideoSingle(id))
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(VideosList)

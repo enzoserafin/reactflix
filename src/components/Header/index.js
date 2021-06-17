@@ -1,9 +1,20 @@
-import { Container } from './styles'
+import { connect } from 'react-redux'
+import {
+    Container,
+    HeaderTitle,
+    RegisterButton
+} from './styles'
+import { onOpenRegisterVideo } from '../../redux-flow/reducers/ui/action-creators'
 
-const Header = () => (
+const Header = ({ onOpenRegisterVideo }) => (
     <Container>
-        <h1>Reactflix</h1>
+        <HeaderTitle>Reactflix</HeaderTitle>
+        <RegisterButton onClick={onOpenRegisterVideo}>Cadastrar vídeo</RegisterButton>
     </Container>
 )
 
-export default Header
+const mapDispatchToProps = (dispatch) => ({
+    onOpenRegisterVideo: () => dispatch(onOpenRegisterVideo())
+})
+
+export default connect(null, mapDispatchToProps)(Header)

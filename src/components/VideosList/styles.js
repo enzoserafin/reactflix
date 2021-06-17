@@ -25,6 +25,10 @@ export const Container = styled.div`
     }
 `
 
+export const VideoLink = styled.a`
+    color: inherit;
+`
+
 export const VideoThumb = styled.div`
     border: 1px solid #999;
     display: flex;
